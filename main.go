@@ -14,12 +14,10 @@ func CalcTime(c *gin.Context) {
 	fmt.Println("花费的时间为：", since)
 }
 
-//定义局部中间件
 func IndexHandler(c *gin.Context){
 	time.Sleep(5 * time.Second)
 }
 
-//定义局部中间件
 func HomeHandler(c *gin.Context){
 	time.Sleep(3 * time.Second)
 }
@@ -30,7 +28,6 @@ func main() {
 	r.Use(CalcTime)
 	routerGroup := r.Group("/begin")
 	{	
-		//实现局部中间件
 		routerGroup.GET("/index",IndexHandler)
 		routerGroup.GET("/home",HomeHandler)
 	}
